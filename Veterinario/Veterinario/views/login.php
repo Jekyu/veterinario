@@ -5,7 +5,7 @@
     </head>
 </html>
 <body>
-    <form action='./controlLogin.php' method="post">
+    <form action='../controllers/controlLogin.php' method="post">
         <label>Email</label>
         <input name='email' required/>
         <label>Password</label>
