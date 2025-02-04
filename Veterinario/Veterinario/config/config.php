@@ -6,7 +6,7 @@
 define('SERVIDOR','127.0.0.1');
 define('USUARIO','postgres');
 define('PASSWORD','123');
-define('BD','veterinario');
+define('BD','veterinaria');
 
 //Conectar
 

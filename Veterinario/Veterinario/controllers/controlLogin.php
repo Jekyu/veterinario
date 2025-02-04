@@ -1,5 +1,4 @@
 <?php
-
 include ('../config/config.php');
 /*if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['email']) && isset($_POST['passwd'])) {
@@ -17,16 +16,16 @@ include ('../config/config.php');
 */
 
 $user = $_POST['email'];
-$passwd = $_POST['passwd'];
+$passwd = $_POST['password'];
 
 echo $user."/".$passwd;
 
 //Realizar Query
-$query = "SELECT *FROM usuario WHERE emailusuario='$user' and passwd = '$passwd'";
+$query = "SELECT * FROM usuario WHERE emailusuario='$user' and passwd = '$passwd'";
 
 $result = pg_query($query) or die('La consulta fallo: ' . pg_last_error());
 
-    //Imprimiendo los resultados en HTML
+//Imprimiendo los resultados en HTML
     echo "<table>\n";
     while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
         echo "\t<tr>\n";

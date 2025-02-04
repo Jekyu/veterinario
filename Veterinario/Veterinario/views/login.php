@@ -7,7 +7,7 @@
 <body>
     <form action='../controllers/controlLogin.php' method="post">
         <label>Email</label>
-        <input name='email' required/>
+        <input name='email' type="email" required/>
         <label>Password</label>
         <input name='passwd' type="password" required/>
         <input type='submit' value="Enviar">

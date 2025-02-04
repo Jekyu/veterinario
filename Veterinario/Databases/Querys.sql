@@ -5,13 +5,27 @@ SELECT * FROM estadousuario;
 ## usuario
 SELECT * FROM usuario;
 
+--Vet
+SELECT * FROM vet;
+
+-- Vet con datos
+SELECT U.idusuario, v.namevet, v.apevet, U.emailusuario
+FROM usuario as U, vet as V
+WHERE U.idusuario = V.idusuario;
+
+--Cliente con datos
+SELECT * FROM cliente;
+
+SELECT U.idusuario, C.namecliente, C.apecliente, U.emailusuario
+FROM usuario as U, cliente as C
+WHERE U.idusuario = C.idusuario;
+
 -- Login usuario
 SELECT emailusuario, passwd
 FROM usuario
 WHERE emailusuario='admin' and passwd ='admin'
 
--- Solo veterinarios
-SELECT U.idusuario, U.nameusuario, U.apeusuario FROM usuario as U WHERE idtipousuario='U2';
+# mascotas
 
 SELECT * FROM tipomascota;
 
@@ -20,9 +34,9 @@ SELECT * FROM mascota;
 TABLE usuario as U;
 
 --Mascotas por usuario
-SELECT U.nameusuario, M.idmascota, M.namemascota
-FROM usuario as U, mascota as M
-WHERE U.idusuario = M.idusuario;
+SELECT C.namecliente, M.idmascota, M.namemascota
+FROM cliente as C, mascota as M
+WHERE C.idcliente = M.idcliente;
 
 --
 SELECT* FROM tipocita;
