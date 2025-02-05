@@ -21,6 +21,7 @@ FROM usuario as U, cliente as C
 WHERE U.idusuario = C.idusuario;
 
 -- Login usuario
+
 SELECT emailusuario, passwd
 FROM usuario
 WHERE emailusuario='admin' and passwd ='admin'
@@ -45,7 +46,41 @@ SELECT * FROM tipoestadocita;
 
 -- Cita
 
-SELECT C.idcita, M.namemascota, C.datecita, C.hourcita, U.nameusuario as Veterinaria, T.nameestadocita
-FROM usuario as U, mascota as M, cita as C, citaveterinario as V, tipoestadocita as T, citaestado AS CE
+SELECT * FROM cita;
+
+SELECT * FROM citavet;
+
+SELECT * FROM 
+
+--Agenda general
+
+SELECT C.idcita, TC.nametipocita, M.namemascota, C.datecita, C.hourcita
+FROM 
+    mascota AS M, 
+    vet as V, 
+    cita as C, 
+    citavet as CV,
+    tipocita as TC
+WHERE C.idcita=CV.idcita 
+AND C.idtipocita = TC.idtipocita
+AND C.idmascota = M.idmascota 
+AND V.idvet = CV.idvet;
+
+--Agenda vet
+SELECT C.idcita, TC.nametipocita, M.namemascota, C.datecita, C.hourcita
+FROM 
+    mascota AS M, 
+    vet as V, 
+    cita as C, 
+    citavet as CV,
+    tipocita as TC
+WHERE C.idcita=CV.idcita 
+AND C.idtipocita = TC.idtipocita
+AND C.idmascota = M.idmascota 
+AND V.idvet = CV.idvet;
+
+--Agenda cliente
+SELECT C.idcita, M.namemascota, C.datecita, C.hourcita, 
+FROM mascota AS M, vet as V, cita as C, citavet
 WHERE C.idmascota = M.idmascota AND V.idusuario = U.idusuario AND T.idestadocita = CE.idestadocita
 

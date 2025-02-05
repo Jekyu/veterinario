@@ -51,6 +51,7 @@ VALUES(
   'Sheffield'
 ); --Automaticamente se agrega el U3 como cliente
 
+
 ## MASCOTAS
 INSERT INTO tipomascota VALUES ('M1', 'Perro');
 INSERT INTO tipomascota VALUES ('M2', 'Gato');
@@ -63,10 +64,10 @@ INSERT INTO tipomascota VALUES ('M8', 'Serpiente');
 INSERT INTO tipomascota VALUES ('M9', 'Lagarto');
 INSERT INTO tipomascota VALUES ('M10', 'Cuyo');
 
-insert into mascota (idmascota,namemascota,idtipomascota,edadaprox,idCliente)
-values ('A1','Felix','M2',3,1);
-insert into mascota (idmascota,namemascota,idtipomascota,edadaprox,idCliente)
-values ('A2','Luna','M1',2,1);
+insert into mascota (idmascota,namemascota,idtipomascota,edadaprox,idUsuario)
+values ('A1','Felix','M2',3,3030);
+insert into mascota (idmascota,namemascota,idtipomascota,edadaprox,idUsuario)
+values ('A2','Luna','M1',2,3030);
 
 ## Citas
 insert into tipoestadocita values ('T1','Agendado');
@@ -83,15 +84,14 @@ insert into tipocita values ('C5','Operación');
 insert into tipocita values ('C6','Urgencia');
 
 -- cita
-insert into cita (datecita, hourcita, idmascota, idtipocita)
+
+insert into cita (datecita, hourcita, idmascota, idtipocita,idvet)
 values(
-  '2025-02-15', --YYYY-MM-DD
+  '2025-03-15', --YYYY-MM-DD
   '13:20', --HH:MM:SS
   'A1', 
-  'C2'
+  'C2',
+  'VET1'
 );
-
-INSERT INTO citavet VALUES (1,'VET1'); --idCita, idVet
-
-insert into citaestado (idcita, idestadocita, hstrcita)
+insert into citaestados(idcita, idestadocita, hstrcita)
 values (1,'T1','Se agenda cita');

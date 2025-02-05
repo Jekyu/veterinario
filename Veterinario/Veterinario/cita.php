@@ -16,5 +16,4 @@
         <button>Cancelar</button>
     </article>
 </section>
-
 <?php include ('./templates/footer.php') ?>

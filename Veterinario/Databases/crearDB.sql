@@ -38,8 +38,7 @@ CREATE TABLE vet(
 );
 
 CREATE TABLE cliente(
-  idUsuario INT NOT NULL REFERENCES usuario(idUsuario),
-  idCliente SERIAL PRIMARY KEY,
+  idUsuario INT NOT NULL UNIQUE REFERENCES usuario(idUsuario),
   nameCliente VARCHAR(30) NOT NULL,
   apeCliente VARCHAR(30) NOT NULL,
   edadCliente INT,
@@ -59,7 +58,7 @@ CREATE TABLE mascota(
   nameMascota VARCHAR(30) NOT NULL,
   idTipoMascota VARCHAR(3) REFERENCES tipoMascota(idTipoMascota),
   edadAprox INT,
-  idCliente int REFERENCES cliente(idCliente),
+  idUsuario int REFERENCES cliente(idUsuario),
   rgtoMascota TIMESTAMP not NULL DEFAULT (NOW()) 
 );
 
@@ -79,18 +78,13 @@ CREATE TABLE cita(
   dateCita DATE NOT NULL,
   hourCita TIME NOT NULL,
   idMascota VARCHAR(10) NOT NULL REFERENCES mascota(idMascota),
-  idTipoCita VARCHAR(3) NOT NULL REFERENCES tipoCita(idTipoCita)
+  idTipoCita VARCHAR(3) NOT NULL REFERENCES tipoCita(idTipoCita),
+  idVet VARCHAR(6) NOT NULL REFERENCES vet(idVet)
 );
 
-CREATE Table citaVet
-(
-  idCita INT NOT NULL REFERENCES cita(idCita),
-  idVet VARCHAR(6) NOT NULL REFERENCES vet(idVet)
-)
-
-CREATE Table citaEstado(
+CREATE Table citaEstados(
   idCita INT NOT NULL REFERENCES cita(idCita),
   idEstadoCita VARCHAR(3) NOT NULL REFERENCES tipoEstadoCita(idEstadoCita),
   hstrCita VARCHAR(256),
-  rgtoCita TIMESTAMP NOT NULL DEFAULT(NOW()) --Cuando se consulte traer el ultimo
+  rgtoCita TIMESTAMP NOT NULL DEFAULT(NOW())
 )

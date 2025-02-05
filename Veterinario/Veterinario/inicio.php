@@ -1,6 +1,5 @@
 <?php include ('./templates/header.php') ?>
 <?php include ('./templates/menu.php') ?>
-
 <section>
     <header>
         <h2>Opcion</h2>
