@@ -32,7 +32,7 @@ session_start();
         <l>
             <li><a href="../inicio.php">Inicio</a></li>
             <li><a href="../agenda.php">Agenda</a></li>
-            <li><a href="../agenda.php">Mascotas</a></li>
+            <li><a href="../mascotas.php">Mascotas</a></li>
             <li><a href="../agenda.php">Historial</a></li>
             <li><a href="../includes/logout.php">Salir</a></li>
         </l>

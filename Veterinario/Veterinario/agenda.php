@@ -1,6 +1,7 @@
 <?php include ('./templates/header.php');
  include ('./templates/menu.php'); 
- include ('../config/config.php');
+
+ 
 ?>
 <section>
         <header>

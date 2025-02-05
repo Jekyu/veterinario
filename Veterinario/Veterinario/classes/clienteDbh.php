@@ -51,4 +51,30 @@ class clienteDbh extends dbh{
         }
         $stmtupdateCliente = null;
     }
+
+    function  getPetsClient($idUser){
+        
+        $urlError = "location: ../mascotas.php?=";
+
+        $stmt = $this->connect()->prepare(
+            "SELECT M.idmascota, M.namemascota
+            FROM cliente as C, mascota as M
+            WHERE C.idusuario = ? AND C.idusuario = M.idusuario;"
+        );
+
+        if(!$stmt->execute(array($idUser))){
+            $stmt = null;
+            header($urlError."stmtGetPetsFailed");
+            exit();
+        }
+
+        if($stmt->rowCount() == 0){
+            $stmt = null;
+            exit();
+        }
+
+        $pets = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt = null;
+        return $pets;
+    }
 }

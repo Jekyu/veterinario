@@ -44,8 +44,7 @@ TABLE usuario as U;
 --Mascotas por usuario
 SELECT C.namecliente, M.idmascota, M.namemascota
 FROM cliente as C, mascota as M
-WHERE C.idcliente = M.idcliente;
-
+WHERE C.idusuario = M.idusuario;
 --
 SELECT* FROM tipocita;
 
