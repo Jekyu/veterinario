@@ -86,7 +86,10 @@ AND C.idmascota = M.idmascota
 AND V.idvet = CV.idvet;
 
 --Agenda cliente
-SELECT C.idcita, M.namemascota, C.datecita, C.hourcita, 
-FROM mascota AS M, vet as V, cita as C, citavet
-WHERE C.idmascota = M.idmascota AND V.idusuario = U.idusuario AND T.idestadocita = CE.idestadocita
+SELECT C.idcita, M.namemascota, C.datecita, C.hourcita
+FROM mascota AS M, vet as V, cita as C, usuario as U
+WHERE C.idmascota = M.idmascota AND V.idvet = C.idvet AND M.idusuario = U.idusuario
 
+SELECT C.idcita, M.namemascota, C.datecita, C.hourcita
+FROM mascota AS M, vet as V, cita as C, usuario as U
+WHERE C.idmascota = M.idmascota AND V.idvet = C.idvet AND M.idusuario = U.idusuario AND U.idusuario = 3030

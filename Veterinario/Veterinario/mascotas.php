@@ -10,3 +10,7 @@
     </header>
     <?=$clientview->fetchPetsClient($_SESSION['id']);?>
 </section>
+
+<?php 
+
+ include ('./templates/footer.php') ?>
