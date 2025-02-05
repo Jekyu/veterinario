@@ -1,5 +1,11 @@
-<?php include ('./templates/header.php') ?>
-<?php include ('./templates/menu.php') ?>
+<?php include ('./templates/header.php'); ?>
+<?php include ('./templates/menu.php');
+session_start();
+var_dump(isset($_SESSION['email']));
+    if(!isset($_SESSION) || !$_SESSION['email']){
+        header("location: ../index.php");
+    }   
+?>
 <section>
     <header>
         <h2>Opcion</h2>

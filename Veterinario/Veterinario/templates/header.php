@@ -3,19 +3,19 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
-        <title>Login</title>
+        <title>veterinaria</title>
         <link rel="stylesheet" href="./CSS/bootstrap.min.css">
     </head>
 
 <body>
     <header id='topheader'>
-        <nav class="navbar navbar-expand-lg bg-primary">
-            <ul class="nav navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Nav 1</a>
+        <nav>
+            <ul>
+                <li>
+                    <a href="#">Logo</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Bienvenido</a>
+                <li>
+                    <p>Bienvenido</p>
                 </li>
             </ul>
         </nav>

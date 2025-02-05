@@ -45,7 +45,7 @@ class loginDhb extends dbh{
 
             session_start();
             $_SESSION['email'] = $user[0]['emailusuario'];
-
+            
             header("location: ../inicio.php");
         }
         $stmt = null;

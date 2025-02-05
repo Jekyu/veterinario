@@ -38,7 +38,7 @@ class loginCtrl extends loginDhb{
 
 
     function invalidEmail(){
-        if(filter_var($this->email,FILTER_VALIDATE_EMAIL))
+        if(!filter_var($this->email,FILTER_VALIDATE_EMAIL))
         {
             $result=false;
         }

@@ -14,10 +14,7 @@ if (isset($_POST['login'])){
         $email,
         $password
     );
-
+    
     // Verificar errores
     $login->loginUser();
-
-    // Devolver a login sin errores
-    //header('location: ../index.php?error=none');
 }
