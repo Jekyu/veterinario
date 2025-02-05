@@ -2,14 +2,7 @@
 
 class clienteCtrl extends clienteDbh{
      
-    public function __construct(
-        private $id, 
-        /*private $name,
-        private $lastN,
-        private $telefono, 
-        private $direc, 
-        private $tipo,*/
-    ){}
+    public function __construct(private $id){}
 
     public function updatePerfilCliente($name, $lastN, $age, $telf, $drcn)
     {
@@ -17,10 +10,10 @@ class clienteCtrl extends clienteDbh{
             header("../perfil.php?error=emptyInputUpdate");
             exit();
         }
-        /*if($this->invalidName($name, $lastN)){
+        if(!$this->invalidName($name, $lastN)){
             header("../perfil.php?error=invalidNames");
             exit();
-        }*/
+        }
         
         $this->updateCliente($name, $lastN, $age, $telf, $drcn,$this->id);
     }

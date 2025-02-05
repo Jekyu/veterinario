@@ -51,4 +51,58 @@ class clienteDbh extends dbh{
         }
         $stmtupdateCliente = null;
     }
+
+    function  getPetsClient($idUser){
+        
+        $urlError = "location: ../mascotas.php?=";
+
+        $stmt = $this->connect()->prepare(
+            "SELECT M.idmascota, M.namemascota
+            FROM cliente as C, mascota as M
+            WHERE C.idusuario = ? AND C.idusuario = M.idusuario;"
+        );
+
+        if(!$stmt->execute(array($idUser))){
+            $stmt = null;
+            header($urlError."stmtGetPetsFailed");
+            exit();
+        }
+
+        if($stmt->rowCount() == 0){
+            $stmt = null;
+            exit();
+        }
+
+        $pets = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt = null;
+        return $pets;
+    }
+
+    function  getAgendaClient($idUser){
+        
+        $urlError = "location: ../mascotas.php?=";
+
+        $stmt = $this->connect()->prepare(
+            "SELECT C.idcita, M.namemascota, C.datecita, C.hourcita
+            FROM mascota AS M, vet as V, cita as C, usuario as U
+            WHERE C.idmascota = M.idmascota AND V.idvet = C.idvet 
+            AND M.idusuario = U.idusuario AND U.idusuario = ?;"
+        );
+
+        if(!$stmt->execute(array($idUser))){
+            $stmt = null;
+            header($urlError."stmtGetAgendaFailed");
+            exit();
+        }
+
+        if($stmt->rowCount() == 0){
+            $stmt = null;
+            exit();
+        }
+
+        $agenda = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt = null;
+        return $agenda;
+    }
 }
+
