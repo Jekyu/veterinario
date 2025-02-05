@@ -4,7 +4,7 @@ class cita{
 
     public function __construct(
         private $id,
-        private $hora
+        private $hora,
         private $tipo
     ){}
 }
