@@ -1,12 +1,28 @@
+<?php
+include "./classes/dbh.php";
+include "./classes/clienteDbh.php";
+include "./classes/clienteCtrl.php";
+include "./classes/clienteView.php";
+session_start();
+    if(!isset($_SESSION) || !$_SESSION['id']){
+        header("location: ../index.php");
+    }else{
+        $clientview = new clienteView();
+    }
+?>
+
 <section>
     <article>
         <header>
             <h2>Bienvenido</h2>
         </header>
-        <p>Usuario</p>
-        <p>Tipo usuairio</p>
+        <h4><?= $_SESSION['email'];?></h4>
+        <p>
+            <?= $clientview->fetchNameClient($_SESSION['id']);?>
+            <?= $clientview->fetchLastNClient($_SESSION['id']);?>
+        </p>
         <footer>
-            <button>Editar</button>
+            <a href="../perfil.php"><button>Editar</button></a>
         </footer>
     </article>
     <article>

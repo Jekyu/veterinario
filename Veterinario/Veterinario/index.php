@@ -1,9 +1,9 @@
 <?php include ('./templates/header.php');
-session_start();
+/*session_start();
 var_dump(isset($_SESSION['email']));
     if(isset($_SESSION) && $_SESSION['email']){
         header("location: ../inicio.php");
-    }          
+    }      */    
 ?>
 <!-- Formulario inicio sesion -->
 

@@ -5,12 +5,7 @@ class signupCtrl extends signupDbh{
         private $email,
         private $pswd,
         private $pswdRpt,
-        private $id,
-        private $name,
-        private $lastN,
-        private $age,
-        private $drcn,
-        private $telf
+        private $userId
     ){}
 
     public function signupUser(){
@@ -27,10 +22,6 @@ class signupCtrl extends signupDbh{
             header($error."usedEmail");
             exit();
         }
-        if($this->invalidName()==false){
-            header($error."invalidName");
-            exit();
-        }
         if($this->pswdMatch()==false){
             header($error."pswdMatch");
             exit();
@@ -38,13 +29,8 @@ class signupCtrl extends signupDbh{
 
         $this->createUser(
             $this->email,
-            $this->id,
-            $this->pswd,
-            $this->name,
-            $this->lastN,
-            $this->age,
-            $this->drcn,
-            $this->telf
+            $this->userId,
+            $this->pswd
         );
     }
 
@@ -53,12 +39,7 @@ class signupCtrl extends signupDbh{
             empty($this->email) ||
             empty($this->pswd) ||
             empty($this->pswdRpt) ||
-            empty($this->id) ||
-            empty($this->name) ||
-            empty($this->lastN) ||
-            empty($this->age) ||
-            empty($this->drcn) ||
-            empty($this->telf)
+            empty($this->userId)
         ){
             $result=false;
         }
@@ -79,7 +60,7 @@ class signupCtrl extends signupDbh{
     }
 
     function usedEmail(){
-        if(!$this->checkTakedUser($this->email,$this->id)){
+        if(!($this->checkTakedUser($this->email,$this->userId))){
             $result=false;
         }
         else{
@@ -88,18 +69,7 @@ class signupCtrl extends signupDbh{
         return $result;
     }
 
-    function invalidName(){
-        $preg='/[^a-zA-Z]*$/';
-        if(!preg_match($preg,$this->name) || !preg_match($preg,$this->lastN)){
-            $result=false;
-        }
-        else{
-            $result=true;
-        }
-        return $result;
-    }
-
-    function pswdMatch(){
+    private function pswdMatch(){
         if($this->pswd!==$this->pswdRpt){
             $result=false;
         }
@@ -107,5 +77,10 @@ class signupCtrl extends signupDbh{
             $result=true;
         }
         return true;
+    }
+
+    public function fetchUserId(){
+        //(trae array)[row][col] = int
+        return ($this->getUserID($this->email))[0]['idusuario'];
     }
 }

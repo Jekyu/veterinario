@@ -1,42 +1,25 @@
 <?php
 
 class signupDbh extends dbh{
-    public function createUser($email,$id,$pswd,$name,$lastN,$age,$drcn,$telf){
-        $result =false;
+
+    public function createUser($email,$id,$pswd){
             $stmtUser = $this->connect()->prepare(
                 "INSERT INTO  usuario (idusuario,emailusuario, passwd)
                 VALUES(?,?,?);"
             );
 
-            $stmtCliente = $this->connect()->prepare(
-                "INSERT INTO cliente (
-                idusuario,
-                namecliente,
-                apecliente,
-                edadcliente,
-                telcliente,
-                dircliente)
-                VALUES(?,?,?,?,?,?)"
-            );
         if(!$stmtUser->execute(array($id,$email,$pswd))){
             $stmt = null;
             header("location: ../registro.php?error=failRegisterUsuario");
             exit();
         }
-        if(!$stmtCliente->execute(array($id,$name,$lastN,$age,$telf,$drcn))){
-            $stmt = null;
-            header("location: ../registro.php?error=failRegisterCliente");
-            exit();
-        }
 
-        $stmt = null;
+        $stmtUser = null;
     }
 
-
     public function checkTakedUser($email,$id){
-        $result =false;
         $stmt = $this->connect()->prepare(
-            "SELECT * FROM usuario WHERE emailusuario = ? AND idUsuario = ?;"
+            "SELECT * FROM usuario WHERE emailusuario = ? OR idUsuario = ?;"
         );
 
         if(!$stmt->execute(array($email,$id))){
@@ -53,5 +36,29 @@ class signupDbh extends dbh{
         }
         return $result;
     }
-   
+
+    protected function getUserID($email){
+
+        $urlError = "location: ../perfil.php?=";
+
+        $stmtGetUser = $this->connect()->prepare(
+            "SELECT idusuario FROM usuario WHERE emailusuario = ?"
+        );
+
+        if(!$stmtGetUser->execute(array($email))){
+            $stmtGetUser = null;
+            header($urlError."stmtSignupClientRegisterGetFailed".gettype($email));
+            exit();
+        }
+
+        if($stmtGetUser->rowCount() == 0){
+            $stmtGetUser = null;
+            header($urlError."profileNotFound");
+            exit();
+        }
+
+        $profileData = $stmtGetUser->fetchAll(PDO::FETCH_ASSOC);
+
+        return $profileData;
+    }
 }

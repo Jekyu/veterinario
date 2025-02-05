@@ -5,11 +5,18 @@ SELECT * FROM estadousuario;
 ## usuario
 SELECT * FROM usuario;
 
+SELECT C.*
+--SELECT U.idusuario, v.namevet, v.apevet, U.emailusuario
+FROM usuario as U, cliente as C
+WHERE U.idusuario = C.idusuario;
+
 --Vet
 SELECT * FROM vet;
 
 -- Vet con datos
-SELECT U.idusuario, v.namevet, v.apevet, U.emailusuario
+
+SELECT U.*
+--SELECT U.idusuario, v.namevet, v.apevet, U.emailusuario
 FROM usuario as U, vet as V
 WHERE U.idusuario = V.idusuario;
 

@@ -7,7 +7,7 @@
             <h2>Agenda</h2>
         </header>
  <?php 
- function readCita(){
+ /*function readCita(){
     $query = "SELECT C.idcita, TC.nametipocita, M.namemascota, C.datecita, C.hourcita
             FROM 
                 mascota AS M, 
@@ -52,6 +52,6 @@ function imprimir($result){
     </section>
     
 <?php 
- }
-}
+/* }
+}*/
 include ('./templates/footer.php') ?>

@@ -44,6 +44,7 @@ class loginDhb extends dbh{
             $user = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
             session_start();
+            $_SESSION['id'] = $user[0]['idusuario'];
             $_SESSION['email'] = $user[0]['emailusuario'];
             
             header("location: ../inicio.php");

@@ -19,26 +19,6 @@
             <h5>Cedula</h5>
             <input name="cedula" type="number" required placeholder="Ingrese su cedula">
         </label>
-        <label style="display: block;">
-            <h5>Nombres</h5>
-            <input name="nombres" type="text" required placeholder="Ingrese su nombre">
-        </label>
-        <label style="display: block;">
-            <h5>Apellidos</h5>
-            <input name="apellidos" type="text" required placeholder="Ingrese su apellidos">
-        </label>
-        <label style="display: block;">
-            <h5>Edad</h5>
-            <input name="edad" type="number" required placeholder="Ingrese su edad">
-        </label>
-        <label style="display: block;">
-            <h5>Dirección</h5>
-            <input name="direc" type="text" required placeholder="Ingrese su dirección">
-        </label>
-        <label style="display: block;">
-            <h5>Telefono</h5>
-            <input name="tel" type="tel" required placeholder="Ingrese su telefono">
-        </label>
         <button name="register">Registrarse</button>
     </form>
     <a href="./index.php"><button>Cancelar</button></a>
