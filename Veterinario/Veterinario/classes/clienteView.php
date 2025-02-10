@@ -30,22 +30,33 @@ class clienteView extends clienteDbh{
     function fetchPetsClient($userID){
         $pets = $this->getPetsClient($userID);
         foreach ($pets as $pet ) {
-            echo "<article>
-                <header><h4>".$pet['namemascota']."</h4></header>
-                <p>Tipo:</p>
-            </article>";
+            echo "
+            <a href='../miMascota.php?id=".$pet['idmascota']."'>
+            <article class='card border-secondary mb-3'>
+                <article class='card-body'>
+                    <header><h4>".$pet['namemascota']."</h4></header>
+                    <p>Id mascota:".$pet['idmascota']."</p>
+                    <p>Tipo mascota:".$pet['nametipomascota']."</p>
+                </article>
+            </article>
+            <a/>
+            ";
         }
     }
 
     function fetchAgendaClient($userID){
         $citas = $this->getAgendaClient($userID);
         foreach ($citas as $cita ) {
-            echo "<article>
-                <header><h4>".$cita['namemascota']."</h4></header>
-                <p>Id cita:".$cita['idcita']."</p>
-                <p>Fecha:".$cita['datecita']."</p>
-                <p>Hora:".$cita['hourcita']."</p>
-            </article>";
+            echo "
+            <article class='card border-secondary mb-3'>
+                <article class='card-body'>
+                    <header><h4>".$cita['namemascota']."</h4></header>
+                    <p>Id cita:".$cita['idcita']."</p>
+                    <p>Fecha:".$cita['datecita']."</p>
+                    <p>Hora:".$cita['hourcita']."</p>
+                </article>
+            </article>"
+            ;
         }
     }
 }

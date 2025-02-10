@@ -44,27 +44,25 @@
 <body>
     <header id="topheader" class="bg-primary text-white py-3">
         <nav class="navbar navbar-expand-lg navbar-dark">
-            <div class="container">
+            <aside 
+            class="container">
                 <!-- Logo -->
                 <a class="navbar-brand" href="#">
                     <img src="https://img.freepik.com/vector-premium/logo-perro-gato-tienda-mascotas_414847-347.jpg?w=2000" alt="Logo">
                 </a>
+            </aside>
                 
-                <!-- Botón de navegación para pantallas pequeñas -->
+                <!-- Botón de navegación para pantallas pequeñas 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 
-                <!-- Menú de navegación -->
+                 Menú de navegación 
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <!-- Aquí iría tu menú de navegación si lo activas -->
-                </div>
-            </div>
+                    Aquí iría tu menú de navegación si lo activas 
+                </div>-->
         </nav>
     </header>
     
-    <main>
+    <main class="row">
         <!-- Contenido principal de la página -->
-    </main>
-</body>
-</html>

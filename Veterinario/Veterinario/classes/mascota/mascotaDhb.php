@@ -3,7 +3,7 @@
 class mascotaDbh extends dbh{
     protected function getMascota($idPet){
 
-        $urlError = "location: ../perfil.php?=";
+        $urlError = "location: ../mimascota.php?error=";
 
         $stmt = $this->connect()->prepare(
             "SELECT * FROM mascota WHERE idmascota=?;"
@@ -24,5 +24,23 @@ class mascotaDbh extends dbh{
         $profileData = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         return $profileData;
+    }
+
+    protected function setMascota($idPet,$namePet,$typePet,$agePet,$idcliente){
+
+        $urlError = "location: ../registrarMascota.php?=";
+
+        $stmt = $this->connect()->prepare(
+            "INSERT INTO mascota (idmascota,namemascota,idtipomascota,edadaprox,idUsuario)
+            values (?,?,?,?,?);"
+        );
+
+        if(!$stmt->execute(array($idPet,$namePet,$typePet,$agePet,$idcliente))){
+            $stmt = null;
+            header($urlError."stmtSetPetFailed");
+            exit();
+        }
+
+        $stmt = null;
     }
 }

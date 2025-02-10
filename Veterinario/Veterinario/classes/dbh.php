@@ -3,8 +3,8 @@
 class dbh{
     protected function connect(){
         try {
-            $username = 'admin';
-            $pswd = 'admin';
+            $username = 'postgres';
+            $pswd = '123';
             $db = 'veterinaria';
             $dbh = new PDO("pgsql:host='localhost';dbname=$db",$username,$pswd);
         } catch (PDOException $e) {

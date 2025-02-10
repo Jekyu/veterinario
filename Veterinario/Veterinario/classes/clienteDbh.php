@@ -57,9 +57,12 @@ class clienteDbh extends dbh{
         $urlError = "location: ../mascotas.php?=";
 
         $stmt = $this->connect()->prepare(
-            "SELECT M.idmascota, M.namemascota
-            FROM cliente as C, mascota as M
-            WHERE C.idusuario = ? AND C.idusuario = M.idusuario;"
+            "SELECT M.idmascota, M.namemascota, TM.nametipomascota
+            FROM cliente as C, mascota as M, tipomascota as TM
+            WHERE C.idusuario = ? 
+            AND C.idusuario = M.idusuario
+            AND M.idtipomascota = TM.idtipomascota
+            ;"
         );
 
         if(!$stmt->execute(array($idUser))){

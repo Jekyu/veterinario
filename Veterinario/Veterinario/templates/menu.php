@@ -11,9 +11,10 @@ session_start();
     }
 ?>
 
-<section>
-    <article>
-        <header>
+<section class="col-3 ms-4 mt-5 mb-5">
+    <section class="card border-primary text-center">
+    <article class="card-body">
+        <header class="text-center">
             <h2>Bienvenido</h2>
         </header>
         <h4><?= $_SESSION['email'];?></h4>
@@ -22,19 +23,25 @@ session_start();
             <?= $clientview->fetchLastNClient($_SESSION['id']);?>
         </p>
         <footer>
-            <a href="../perfil.php"><button>Editar</button></a>
+            <a href="../perfil.php"><button class="btn btn-primary btn-block mt-3">Editar</button></a>
         </footer>
     </article>
-    <article>
-        <header>
-            <h2>Menú</h2>
-        </header>
-        <l>
-            <li><a href="../inicio.php">Inicio</a></li>
-            <li><a href="../agenda.php">Agenda</a></li>
-            <li><a href="../mascotas.php">Mascotas</a></li>
-            <li><a href="../agenda.php">Historial</a></li>
-            <li><a href="../includes/logout.php">Salir</a></li>
-        </l>
+    </section><br>
+    <article class="card border-secondary">
+        <article class="card-body">
+            <header>
+                <h2>Menú</h2>
+            </header>
+            <l>
+                <li><a href="../inicio.php">Inicio</a></li>
+                <li><a href="../agenda.php">Agenda</a></li>
+                <li><a href="../mascotas.php">Mascotas</a></li>
+                <li><a href="../agenda.php">Historial</a></li>
+                <li><a href="../includes/logout.php">Salir</a></li>
+            </l>
+        </article>
     </article>
 </section>
+
+<!-- Seccion del lado derecho-->
+<section class="col-8 mt-5 ms-4 mb-5" >
